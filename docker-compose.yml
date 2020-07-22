@@ -12,6 +12,8 @@ services:
   hasura:
     container_name: gutenberg_hasura
     image: hasura/graphql-engine:v1.2.0
+    ports:
+      - 8080:8080
     depends_on:
       - "postgres"
     restart: always
