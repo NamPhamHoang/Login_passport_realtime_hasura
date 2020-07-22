@@ -14,9 +14,6 @@ app.use(
   })
 );
 
-import searchRoute from "~@/routes/search.route";
-import getBestOfferRoute from "~@/routes/get_best_offer.route";
-
 app.use(
   "/hasura",
   createProxyMiddleware({
@@ -41,9 +38,6 @@ app.use(
 );
 
 // app.use("/public", express.static(path.join(__dirname, "../../public")));
-
-app.use("/search", searchRoute);
-app.use("/bestOffer", getBestOfferRoute);
 
 (async () => {
   app.listen(process.env.PORT, () => {
