@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es2017",
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "removeComments": true,
+    "lib": ["ES2015", "ESNext", "ES2016"],
+    "outDir": "dist",
+    "preserveConstEnums": true,
+    "sourceMap": true,
+    "types": ["node", "jest"],
+    "baseUrl": ".",
+    "paths": {
+      "~@/*": ["./src/*"]
+    },
+    "esModuleInterop": true,
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "resolveJsonModule": true,
+    "isolatedModules": false
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "exclude": ["src/**/*.spec.ts", "node_modules/**"],
+  "compileOnSave": false
+}

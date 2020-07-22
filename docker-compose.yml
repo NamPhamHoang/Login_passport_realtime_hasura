@@ -1,0 +1,46 @@
+version: "3.6"
+services:
+  postgres:
+    image: postgres:12.2
+    restart: always
+    networks:
+      - internal
+    volumes:
+      - database:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: postgres
+  hasura:
+    container_name: gutenberg_hasura
+    image: hasura/graphql-engine:v1.2.0
+    depends_on:
+      - "postgres"
+    restart: always
+    networks:
+      - internal
+    env_file:
+      - .environments/development.env
+  rabbimq:
+    container_name: rabbit_mq
+    image: rabbitmq:latest
+    environment:
+      RABBITMQ_DEFAULT_USER: root
+      RABBITMQ_DEFAULT_PASS: root
+#   app:
+#     env_file:
+#       - .environments/prod.env
+#     networks:
+#       - internal
+#       - freelancer
+#       - jenkins
+#     build:
+#       context: .
+#       dockerfile: App.DockerFile
+#     restart: always
+#     depends_on:
+#       - "postgres"
+#       - "hasura"
+volumes:
+  database:
+    external: true
+networks:
+  internal:
